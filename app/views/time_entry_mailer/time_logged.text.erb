@@ -1,0 +1,13 @@
+Hello,
+
+this is to inform you that <%= @actor %> just logged <%= pluralize(@hours, 'hour') %> on issue #<%= @issue.id %> of the <%= @project %> project.
+
+<% if @entry.comments.present? %>
+  Comments:
+
+  <%= @entry.comments %>
+
+<% end %>
+---------
+
+<%= render partial: 'mailer/issue', formats: [:text], locals: { issue: @issue, users: [ @actor ], issue_url: issue_url(@issue) } %>
