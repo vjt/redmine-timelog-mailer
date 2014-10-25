@@ -23,6 +23,6 @@ class TimeEntryMailer < ActionMailer::Base
 
     to = @issue.project.members.map(&:mail) - [ @actor.mail ]
 
-    mail from: Setting.mail_from, to: to, subject: "#@hours hours logged by #@actor on #@project"
+    mail from: Setting.mail_from, to: to, subject: "[#{@project.name} - #{@issue.tracker.name} ##{@issue.id}] #@hours hours logged by #@actor"
   end
 end
