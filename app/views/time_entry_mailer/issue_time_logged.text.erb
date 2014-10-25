@@ -1,6 +1,6 @@
 Hello,
 
-this is to inform you that <%= @actor %> just logged <%= pluralize(@hours, 'hour') %> on issue #<%= @issue.id %> of the <%= @project %> project.
+this is to inform you that <%= @actor %> just logged <%= pluralize(@hours, 'hour') %> of <%= @activity %> on issue #<%= @issue.id %> of the <%= @project %> project.
 
 <% if @entry.comments.present? %>
 Comments:

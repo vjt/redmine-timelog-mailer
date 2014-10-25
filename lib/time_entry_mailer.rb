@@ -19,6 +19,7 @@ class TimeEntryMailer < ActionMailer::Base
     @issue   = time_entry.issue
     @actor   = time_entry.user
     @project = time_entry.project
+    @activity = time_entry.activity
     @hours   = time_entry.hours
     @rcpts   = @project.members.map {|m| m.user.mail } - [ @actor.mail ]
 
