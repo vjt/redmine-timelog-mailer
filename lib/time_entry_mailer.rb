@@ -15,13 +15,13 @@ class TimeEntryMailer < ActionMailer::Base
   end
 
   def time_logged(time_entry)
-    @entry   = time_entry
-    @issue   = time_entry.issue
-    @actor   = time_entry.user
-    @project = time_entry.project
+    @entry    = time_entry
+    @issue    = time_entry.issue
+    @actor    = time_entry.user
+    @project  = time_entry.project
     @activity = time_entry.activity
-    @hours   = time_entry.hours
-    @rcpts   = @project.members.map {|m| m.user.mail } - [ @actor.mail ]
+    @hours    = time_entry.hours
+    @rcpts    = @project.members.map {|m| m.user.mail } - [ @actor.mail ]
 
     @issue ? issue_time_logged : project_time_logged
   end
