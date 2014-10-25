@@ -17,7 +17,7 @@ end
 
 ActionDispatch::Callbacks.to_prepare do
 
-  TimeEntryObserver.instance # Instantiate and register the observer
+  TimelogMailer::TimeEntryObserver.instance # Instantiate and register the observer
 
   # Add this module to the list of available project modules
   #
