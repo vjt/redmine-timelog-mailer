@@ -23,5 +23,6 @@ Released under the MIT License.
 Credits
 -------
 
-* Inspired by a request by Fabio Pietrosanti - tw: @fpietrosanti - e: fabio.pietrosanti@logioshermes.org
-* Hacked together by Marcello Barnaba - tw: @vjt - e: vjt@openssl.it
+* Inspired by a request by Fabio Pietrosanti - [@fpietrosanti](http://twitter.com/fpietrosanti) -
+  fabio.pietrosanti@logioshermes.org for the http://logioshermes.org/ foundation
+* Hacked together by Marcello Barnaba - [@vjt](http://twitter.com/vjt) - vjt@openssl.it
