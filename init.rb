@@ -19,4 +19,12 @@ ActionDispatch::Callbacks.to_prepare do
 
   TimeEntryObserver.instance # Instantiate and register the observer
 
+  # Add this module to the list of available project modules
+  #
+  Redmine::AccessControl.map do |map|
+    map.project_module :time_tracking_mailer do |map|
+      map.permission :log_time, { timelog: [:new, :create] }, require: :loggedin
+    end
+  end
+
 end

@@ -6,6 +6,8 @@ class TimeEntryObserver < ActiveRecord::Observer
   observe :time_entry
 
   def after_create(time_entry)
-    TimeEntryMailer.time_logged(time_entry).deliver!
+    if time_entry.project.enabled_modules.where(name: 'time_tracking_mailer').exists?
+      TimeEntryMailer.time_logged(time_entry).deliver!
+    end
   end
 end
