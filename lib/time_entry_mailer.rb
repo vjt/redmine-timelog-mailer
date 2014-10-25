@@ -21,9 +21,8 @@ class TimeEntryMailer < ActionMailer::Base
     @project = time_entry.project
     @hours   = time_entry.hours
 
-    to = @issue.notified_users.map(&:mail) - [ @actor.mail ]
-    cc = @issue.notified_watchers.map(&:mail) - to
+    to = @issue.project.members.map(&:mail) - [ @actor.mail ]
 
-    mail from: Setting.mail_from, to: to, cc: cc, subject: "#@hours hours logged by #@actor on #@project"
+    mail from: Setting.mail_from, to: to, subject: "#@hours hours logged by #@actor on #@project"
   end
 end
