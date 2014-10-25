@@ -22,8 +22,23 @@ class TimeEntryMailer < ActionMailer::Base
     @hours   = time_entry.hours
     @rcpts   = @project.members.map {|m| m.user.mail } - [ @actor.mail ]
 
-    to = @issue.project.members.map(&:mail) - [ @actor.mail ]
-
-    mail from: Setting.mail_from, to: to, subject: "[#{@project.name} - #{@issue.tracker.name} ##{@issue.id}] #@hours hours logged by #@actor"
+    @issue ? issue_time_logged : project_time_logged
   end
+
+  private
+    def issue_time_logged
+      subject = "[#{@project.name} - #{@issue.tracker.name} ##{@issue.id}] #@hours hours logged by #@actor"
+      mail subject, 'issue_time_logged'
+    end
+
+    def project_time_logged
+      subject = "[#{@project.name}] #@hours hours logged by #@actor"
+      mail subject, 'project_time_logged'
+    end
+
+    def mail(subject, template)
+      super from: Setting.mail_from, to: @rcpts, subject: subject do |format|
+        format.text { render "time_entry_mailer/#{template}" }
+      end
+    end
 end
