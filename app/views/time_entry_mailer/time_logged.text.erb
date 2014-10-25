@@ -3,10 +3,9 @@ Hello,
 this is to inform you that <%= @actor %> just logged <%= pluralize(@hours, 'hour') %> on issue #<%= @issue.id %> of the <%= @project %> project.
 
 <% if @entry.comments.present? %>
-  Comments:
+Comments:
 
-  <%= @entry.comments %>
-
+<%= @entry.comments %>
 <% end %>
 ---------
 
