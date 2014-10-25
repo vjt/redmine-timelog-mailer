@@ -8,7 +8,7 @@ Redmine::Plugin.register :timelog_mailer do
   name 'Time Log Mailer'
   author 'Marcello Barnaba'
   description 'E-mails project members when time entries are logged'
-  version '0.0.4'
+  version '0.1.0'
   url 'https://github.com/vjt/redmine-timelog-mailer'
   author_url 'http://sindro.me'
 
