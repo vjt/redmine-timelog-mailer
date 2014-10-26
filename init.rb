@@ -17,7 +17,13 @@ end
 
 ActionDispatch::Callbacks.to_prepare do
 
-  TimelogMailer::TimeEntryObserver.instance # Instantiate and register the observer
+  # Instantiate and register the TimeEntry observer
+  #
+  TimelogMailer::TimeEntryObserver.instance
+
+  # Add our views to ActionMailer
+  #
+  ActionMailer::Base.append_view_path Pathname.new(__FILE__).dirname.join('app/views')
 
   # Add this module to the list of available project modules
   #
