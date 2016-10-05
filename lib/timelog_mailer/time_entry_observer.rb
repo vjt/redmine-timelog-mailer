@@ -14,16 +14,11 @@ module TimelogMailer
 
     private
       def should_email?(time_entry)
-        project = time_entry.project
-        mailer_enabled?(project) && mailer_recipients?(project)
+        mailer_enabled?(time_entry.project)
       end
 
       def mailer_enabled?(project)
         project.enabled_modules.where(name: 'time_tracking_mailer').exists?
-      end
-
-      def mailer_recipients?(project)
-        project.members.exists? # FIXME DRY with Mailer
       end
   end
 end
