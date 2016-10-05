@@ -8,7 +8,7 @@ module TimelogMailer
 
     def after_create(time_entry)
       if should_email?(time_entry)
-        TimeEntryMailer.time_logged(time_entry).deliver!
+        TimeEntryMailer.deliver_time_logged_in(time_entry)
       end
     end
 

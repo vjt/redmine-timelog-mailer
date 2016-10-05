@@ -15,7 +15,7 @@ module TimelogMailer
       { :host => Setting.host_name, :protocol => Setting.protocol }
     end
 
-    def time_logged(time_entry)
+    def deliver_time_logged_in(time_entry)
       @entry    = time_entry
       @issue    = time_entry.issue
       @actor    = time_entry.user
@@ -24,7 +24,12 @@ module TimelogMailer
       @hours    = time_entry.hours
       @rcpts    = @project.members.map {|m| m.user.mail } - [ @actor.mail ]
 
-      @issue ? issue_time_logged : project_time_logged
+      if @rcpts.present?
+        mail = @issue ? issue_time_logged : project_time_logged
+        mail.deliver!
+      else
+        false
+      end
     end
 
     private
